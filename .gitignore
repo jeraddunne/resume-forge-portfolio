@@ -1,0 +1,33 @@
+# ---------------------------------------------------------------------------
+# Secrets — never commit. This project is bring-your-own-key by design; no key
+# of any kind belongs in version control. See docs/SECURITY-KEYS.md.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+auth.json
+credentials.json
+secrets.json
+.codex/
+**/apikey*.txt
+**/*api*key*.txt
+
+# ---------------------------------------------------------------------------
+# OS / editor noise
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# ---------------------------------------------------------------------------
+# Local tooling only. The published site is static and has no build step.
+# ---------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
