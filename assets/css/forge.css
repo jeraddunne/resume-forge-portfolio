@@ -333,3 +333,15 @@
     flex: 1 1 100%;
   }
 }
+
+/* Links inside hint text inherited the browser default blue, which is both
+   off-palette and low-contrast on the dark panel. Caught in screenshot QA. */
+.forge-hint a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.forge-hint a:hover {
+  color: var(--white-2);
+}
