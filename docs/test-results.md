@@ -105,3 +105,37 @@ prevent, and it is the only assertion in this document that needs a human to
 read the output and judge it.
 
 Record the outcome in [`ai-usage-journal.md`](ai-usage-journal.md).
+
+---
+
+## Live-site verification (Q14)
+
+Re-run against the deployed URL rather than the local copy, because a local
+pass proves the files are correct and a live pass proves the *deployment* is.
+
+**URL:** https://jeraddunne.github.io/resume-forge-portfolio/
+**Date:** 2026-09-10 · **Evidence:** [`04-live-site-forge.jpg`](evidence/04-live-site-forge.jpg)
+
+| Check | Live result |
+| --- | --- |
+| Site loads | **PASS** — `200`, title `Jerad Dunne — Software Engineer, AI-Assisted Tooling` |
+| AC1 — no placeholder identity | **PASS** — placeholder word list against live `outerHTML` → empty |
+| AC3 — navigation | **PASS** — all 5 controls clicked on the live page, target matched every time |
+| AC4 — storage clean on first load | **PASS** — 0 `forge.` keys in `localStorage` on a fresh visit |
+| AC5 — alt text | **PASS** — 8 images, 0 missing `alt` |
+| Forge panel initialises from the deployed modules | **PASS** — 2 provider radios built at runtime; model list `claude-opus-5, claude-sonnet-5, claude-haiku-4-5` |
+| `/index.txt` removed | **PASS** — `404` on the live site, confirming the template's text dump is not served |
+| Asset paths resolve | **PASS** — `/assets/js/forge/forge.js`, `/assets/js/forge/providers.js`, `/assets/css/a11y.css`, `/docs/resume-forge.md`, `/ai-log.md` all `200` |
+
+### One result that needed interpreting rather than recording
+
+A `fetch(..., {method:'HEAD'})` from the live page to the two GitHub project
+links returned `TypeError` rather than a status code. That is **not** a broken
+link — github.com does not send CORS headers, so the browser refuses to expose
+the response to a page on another origin. The links were confirmed separately
+with `curl`, which is not subject to CORS, and both return `200`. Clicking them
+in the browser works normally, because a navigation is not a cross-origin
+`fetch`.
+
+Recorded because the raw output looks like a failure and is not one. The test
+method was wrong for the question, which is worth more than the result.
