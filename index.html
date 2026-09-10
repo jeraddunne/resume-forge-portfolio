@@ -19,6 +19,7 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/forge.css">
 
   <!--
     - google font link
@@ -156,6 +157,10 @@
 
           <li class="navbar-item">
             <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="forge">Forge</button>
           </li>
 
           <li class="navbar-item">
@@ -622,6 +627,131 @@
 
 
       <!--
+        - #FORGE
+      -->
+
+      <article class="forge" data-page="forge">
+
+        <header>
+          <h2 class="h2 article-title">Forge</h2>
+        </header>
+
+        <section class="forge-intro">
+          <p>
+            A working slice of <strong>Resume Forge</strong>, running in your browser on your own API key. Paste one
+            resume bullet and get three rewrites, plus an explicit list of the evidence the bullet is missing. It will
+            not invent a metric for you &mdash; that rule outranks every style rule in the prompt.
+          </p>
+          <p>
+            There is no backend here. This site cannot see your key or your text, because there is no server of mine
+            for either to travel through.
+          </p>
+        </section>
+
+        <section class="forge-panel" id="forge-panel">
+
+          <form id="forge-form" novalidate>
+
+            <fieldset class="forge-fieldset">
+              <legend class="forge-legend">1. Choose a provider</legend>
+              <div class="forge-choices" id="forge-provider-choices"></div>
+            </fieldset>
+
+            <p class="forge-note" id="forge-provider-note"></p>
+
+            <!-- Direct-transport controls: shown for providers the browser can call. -->
+            <div id="forge-direct-block">
+
+              <div class="forge-field">
+                <label for="forge-model">2. Model</label>
+                <select class="forge-select" id="forge-model"></select>
+              </div>
+
+              <div class="forge-field">
+                <label for="forge-key">3. Your API key</label>
+                <input class="forge-input" type="password" id="forge-key" autocomplete="off" spellcheck="false"
+                  autocapitalize="off" autocorrect="off" name="forge-key-field">
+                <div class="forge-inline">
+                  <label class="forge-check" for="forge-remember">
+                    <input type="checkbox" id="forge-remember">
+                    <span>Keep it for this tab only</span>
+                  </label>
+                  <button type="button" class="forge-btn" id="forge-forget">Forget key</button>
+                </div>
+                <p class="forge-hint" id="forge-key-status"></p>
+                <p class="forge-hint"><a id="forge-key-link" href="#" rel="noopener"></a></p>
+              </div>
+
+            </div>
+
+            <!-- Handoff-transport controls: shown for providers no browser can call. -->
+            <div id="forge-handoff-block" hidden>
+
+              <ol class="forge-steps">
+                <li>Build the prompt below, then press <strong>Copy prompt</strong>.</li>
+                <li>
+                  In a terminal, pipe it to your local Codex CLI &mdash; already configured with your U-M Toolkit key:
+                  <code class="forge-code" id="forge-cli-command"></code>
+                </li>
+                <li>Paste what it prints into the box below and press <strong>Show result</strong>.</li>
+              </ol>
+
+              <div class="forge-field">
+                <label for="forge-paste">CLI output</label>
+                <textarea class="forge-textarea" id="forge-paste"
+                  placeholder="Paste what codex printed here"></textarea>
+                <div class="forge-inline">
+                  <button type="button" class="forge-btn" id="forge-render">Show result</button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="forge-field">
+              <label for="forge-mode">Resume standard</label>
+              <select class="forge-select" id="forge-mode">
+                <option value="private">Private sector &mdash; ATS</option>
+                <option value="federal">Federal &mdash; OPM two-page</option>
+              </select>
+            </div>
+
+            <div class="forge-field">
+              <label for="forge-role">Target role <span class="forge-hint" style="display:inline;">(optional)</span></label>
+              <input class="forge-input" type="text" id="forge-role"
+                placeholder="e.g. Software Engineer, Data Analyst">
+            </div>
+
+            <div class="forge-field">
+              <label for="forge-bullet">Resume bullet to rewrite</label>
+              <textarea class="forge-textarea" id="forge-bullet"
+                placeholder="Responsible for managing the team inbox and helping with reports."></textarea>
+              <p class="forge-hint">
+                Use a real bullet from your own resume. Nothing you type is stored or transmitted anywhere except to
+                the provider you picked, when you press the button.
+              </p>
+            </div>
+
+            <div class="forge-actions">
+              <button type="button" class="forge-btn forge-btn--primary" id="forge-run">Rewrite bullet</button>
+              <button type="button" class="forge-btn forge-btn--primary" id="forge-copy" hidden>Copy prompt</button>
+            </div>
+
+          </form>
+
+          <p class="forge-status" id="forge-status" role="status" aria-live="polite" hidden></p>
+
+          <pre class="forge-output" id="forge-output" tabindex="0" hidden></pre>
+
+          <p class="forge-usage" id="forge-usage" hidden></p>
+
+          <p class="forge-privacy"><strong>Where your data goes:</strong> <span id="forge-privacy"></span></p>
+
+        </section>
+
+      </article>
+
+
+      <!--
         - #CONTACT
       -->
 
@@ -689,6 +819,11 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+
+  <!--
+    - forge panel (ES module; loads deferred by default)
+  -->
+  <script type="module" src="./assets/js/forge/forge.js"></script>
 
   <!--
     - ionicon link
