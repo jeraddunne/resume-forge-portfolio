@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img">
+  <defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="hsl(45,100%,72%)"/><stop offset="100%" stop-color="hsl(35,100%,60%)"/>
+  </linearGradient></defs>
+  <rect width="600" height="400" fill="hsl(240,2%,12%)"/>
+  <rect x="48" y="46" width="250" height="308" rx="10" fill="hsl(240,2%,17%)" stroke="hsl(0,0%,100%)" stroke-opacity=".08"/>
+  <rect x="72" y="76" width="130" height="12" rx="6" fill="url(#a)"/>
+  <rect x="72" y="102" width="94" height="8" rx="4" fill="hsl(0,0%,100%)" fill-opacity=".25"/>
+  <g fill="hsl(0,0%,100%)" fill-opacity=".14">
+    <rect x="72" y="136" width="202" height="7" rx="3.5"/><rect x="72" y="154" width="178" height="7" rx="3.5"/>
+    <rect x="72" y="172" width="192" height="7" rx="3.5"/><rect x="72" y="200" width="202" height="7" rx="3.5"/>
+    <rect x="72" y="218" width="150" height="7" rx="3.5"/><rect x="72" y="246" width="188" height="7" rx="3.5"/>
+    <rect x="72" y="264" width="166" height="7" rx="3.5"/><rect x="72" y="292" width="196" height="7" rx="3.5"/>
+  </g>
+  <rect x="330" y="46" width="222" height="308" rx="10" fill="hsl(240,2%,17%)" stroke="url(#a)" stroke-opacity=".35"/>
+  <text x="354" y="86" font-family="Poppins,Segoe UI,sans-serif" font-size="15" font-weight="600" fill="url(#a)">Compliance</text>
+  <g font-family="Poppins,Segoe UI,sans-serif" font-size="12" fill="hsl(0,0%,100%)" fill-opacity=".62">
+    <circle cx="362" cy="124" r="7" fill="hsl(140,60%,55%)"/><text x="380" y="128">Two pages</text>
+    <circle cx="362" cy="160" r="7" fill="hsl(140,60%,55%)"/><text x="380" y="164">Dates MM/YYYY</text>
+    <circle cx="362" cy="196" r="7" fill="hsl(140,60%,55%)"/><text x="380" y="200">Hours per week</text>
+    <circle cx="362" cy="232" r="7" fill="hsl(8,75%,58%)"/><text x="380" y="236">GS series-grade</text>
+    <circle cx="362" cy="268" r="7" fill="hsl(8,75%,58%)"/><text x="380" y="272">2 orphan bullets</text>
+    <circle cx="362" cy="304" r="7" fill="hsl(140,60%,55%)"/><text x="380" y="308">Citizenship</text>
+  </g>
+</svg>
