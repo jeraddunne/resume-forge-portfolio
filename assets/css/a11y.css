@@ -1,0 +1,76 @@
+/**
+ * a11y.css — accessibility corrections over the template.
+ *
+ * Kept separate from style.css so upstream's stylesheet stays reviewable as
+ * upstream code and every correction here is attributable. Each rule below
+ * fixes something the template does not handle.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Skip link. The sidebar is long, so a keyboard or screen-reader user would
+ * otherwise tab through the whole contact block before reaching the content.
+ * ------------------------------------------------------------------------ */
+.skip-link {
+  position: absolute;
+  inset-inline-start: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-600);
+  border-radius: 0 0 10px 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  inset-inline-start: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Visible focus. The template styles :hover but never :focus, so a keyboard
+ * user gets no indication of where they are. Uses :focus-visible so mouse
+ * users do not see a ring on every click.
+ * ------------------------------------------------------------------------ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--orange-yellow-crayola);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.navbar-link:focus-visible {
+  outline-offset: -2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * The template marks the active nav item with colour alone. Colour is not
+ * available to every reader, so the active item also gets a weight change and
+ * an underline rule.
+ * ------------------------------------------------------------------------ */
+.navbar-link[aria-current="page"] {
+  font-weight: var(--fw-600);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Respect a reduced-motion preference. The template animates transitions
+ * unconditionally.
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
