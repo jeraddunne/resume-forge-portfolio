@@ -116,3 +116,64 @@ The panel exists to demonstrate the prompt doctrine and the key handling in
 something anyone can try in ten seconds. The part that makes the desktop
 application worth using — the deterministic scanner — is exactly the part that
 does not fit in a browser panel, which is itself the point of the case study.
+
+---
+
+## How the brief was decomposed
+
+The project began as a single request with eleven distinct requirements
+embedded in it. Before any code was written, the brief was decomposed into
+testable requirements, each mapped to a specific implementation. That mapping
+is why the finished application has no orphan features and no unmet asks.
+
+| Requirement as stated | Where it landed |
+| --- | --- |
+| Takes day-to-day activities, job titles, elements | Freeform intake box, mined during generation |
+| Skills that certificates require | Profile schema + prompt instruction folding skills into bullets |
+| Reusable application | `electron-store` session persistence; stateless prompt functions |
+| OPM approved format | `shared/prompts.js` rule blocks + `shared/compliance.js` audit |
+| Also meet public job standards | Federal / Private mode toggle branching all four prompts |
+| Bring job announcements into the prompt | `joaParsePrompt` plus paste or file import |
+| Bring in premade resumes to populate data | `documents.js` PDF, DOCX, TXT, MD extraction |
+| Ask the user about skills | `interviewPrompt`, returns up to six targeted questions |
+| Correct verbiage for leadership claims | `verbiagePrompt` verb calibration ladder |
+| Expandable using best prompting | Prompt library isolated in `shared/`, composed from named rule blocks |
+| No longer than two pages | Live page estimator, blocking error, one-click auto-trim |
+
+### The one interpretation that shaped everything else
+
+The brief said resumes can be no longer than two pages. That could have been
+implemented as a prompt instruction alone. It was not.
+
+**Language models are unreliable at counting, so a page limit enforced only by
+prompt is a page limit that silently fails.** The decision was to build a
+separate deterministic engine that measures the output independently of the
+model. That single choice produced the compliance scanner, which became the
+defining feature of the application.
+
+---
+
+## Known limitations
+
+Stated because a case study that lists only strengths is marketing.
+
+**The OPM rules are secondary-sourced.** They were inherited from my own
+`usajobs-resume` skill file and have not been independently verified against
+opm.gov or usajobs.gov. The skill asserts the two-page limit took effect
+27 September 2025 under the Merit Hiring Plan of 29 May 2025, supported by
+EO 13932 and EO 14170. That chain is internally consistent and detailed enough
+to be credible, but it is a secondary source. **Before submitting a real
+application, confirm the rule against the announcement itself.** Some
+non-Title 5, judicial, legislative, and CV-required postings waive the two-page
+limit entirely.
+
+**Two subsystems were never tested.** They are in the verification record as
+untested, not as passing.
+
+**Roughly 636 lines of federal hiring doctrine are not wired in.** Six
+reference files sit in the skill directory that the application does not
+currently load — the largest source of untapped value already in hand.
+
+The same standard applies to the Forge panel on this site: the live Claude
+round trip is documented as untested rather than assumed working. See
+[`test-results.md`](test-results.md#manual-test-still-outstanding).

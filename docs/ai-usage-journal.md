@@ -89,16 +89,69 @@ Logged because a log containing only successes is not a log.
 
 ---
 
-## Session 2 — *(to complete after deployment)*
+## Session 2 — 2026-09-10 (same day, after deployment)
 
-Reserved for the live Claude completion test described in
-[`test-results.md`](test-results.md#manual-test-still-outstanding). Record:
+**Model:** Claude Opus 5 · **Purpose:** replace scaffolded content with my real
+professional history, and close the assignment gaps.
 
-- Date, model selected, and the bullet used
-- Whether the output invented any metric not present in the input **(this is
-  the pass/fail condition)**
-- Whether the MISSING EVIDENCE section asked a useful question
-- Approximate token usage and cost as reported by the panel
+### 2.1 — Supplied source documents
+
+I provided my federal resume (GS-2210-12 target), my June 2026 private-sector
+resume, and the Resume Forge build dossier. All three are my own documents.
+
+**Outcome:** the assistant read all three and did **not** immediately publish
+them. It flagged two things first.
+
+### 2.2 — It refused to publish PII without a decision from me
+
+It identified material in the resumes that it would not put on a public page
+without an explicit decision: my phone number, home address, "Active Secret
+Clearance (Tier 3)", and "Veterans' Preference: 10-Point / 30% Compensable."
+
+Its reasoning on the last one is the part worth recording: that field discloses
+a **service-connected disability rating**, which is medical information, and a
+public portfolio is indexed permanently. It is a legitimate factor on a federal
+application and does not belong on an open web page.
+
+**My decision:** professional content only. See `decisions.md` D9.
+
+This is the correct division of labour. It surfaced a consequence I had not
+weighed; the decision was mine because it is my information and my risk.
+
+### 2.3 — It caught that my two resumes contradict each other
+
+Comparing the documents surfaced four conflicts: TACOM role dates
+(06/2024 vs 03/2022), whether the Army Fellows Program is a separate role, the
+2025 award's name ("Department of the Army" vs "Department of War"), and the
+M.S. start date.
+
+**My decision:** the federal resume governs. See `decisions.md` D10.
+
+**Action item that came out of it:** one of my two resumes is wrong and both are
+in circulation. Filed as an issue in this repository. This is precisely the
+class of error Resume Forge exists to catch, found in my own documents.
+
+### 2.4 — API key file
+
+I mentioned a `Codex API Key.txt` file I keep for local testing. The assistant
+**did not read its contents**, and checked three things instead: whether it was
+inside the repository (no), whether `.gitignore` would catch it if moved in
+(yes), and where it actually lives.
+
+**Finding I had not considered:** it is in `OneDrive\Desktop`, so it is not
+local — it syncs to Microsoft's cloud and to every device on that account. It is
+also redundant, because `codex` reads `~/.codex/auth.json`, which already holds
+the key. See `decisions.md` D12.
+
+### 2.5 — Assignment gap analysis
+
+I asked what requirements I had missed. It re-read the assignment against the
+repository and found one real gap: **Q14 requires that any difference,
+limitation, or deployment issue be reported as issues under the repo**, and I
+had documented my limitations in Markdown but never filed them as issues. Filed
+in this session.
+
+---
 
 ---
 

@@ -110,6 +110,24 @@ why.
 
 Answers A through E.
 
+## 12. Reported limitations and deployment observations
+
+Q14 asks that any difference, limitation, or deployment issue be reported as
+issues under the repository, **even when the deployment worked correctly**.
+Filed:
+
+| Issue | Title | Type |
+| --- | --- | --- |
+| [#6](https://github.com/jeraddunne/resume-forge-portfolio/issues/6) | Untested: live Claude completion with a valid key | Limitation |
+| [#7](https://github.com/jeraddunne/resume-forge-portfolio/issues/7) | Untested: Codex handoff round trip against the real codex CLI | Limitation |
+| [#8](https://github.com/jeraddunne/resume-forge-portfolio/issues/8) | Ionicons loads from unpkg.com on an origin that handles API keys | Security posture |
+| [#9](https://github.com/jeraddunne/resume-forge-portfolio/issues/9) | No screen-reader pass performed | Accessibility |
+| [#10](https://github.com/jeraddunne/resume-forge-portfolio/issues/10) | My two source resumes disagree on dates and an award name | Content accuracy |
+| [#11](https://github.com/jeraddunne/resume-forge-portfolio/issues/11) | Pages serves docs/ markdown as raw text | Deployment observation |
+
+The deployment itself succeeded and the live site passes every acceptance
+criterion. These are the things that are true anyway.
+
 ---
 
 ## Supporting documents
@@ -121,7 +139,8 @@ Not required, but they hold the reasoning behind the decisions above.
 | [`provider-transport-findings.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/docs/provider-transport-findings.md) | The CORS investigation that changed the architecture, with raw responses and the alternatives ruled out |
 | [`SECURITY-KEYS.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/docs/SECURITY-KEYS.md) | Key-handling policy, code-level protections, and residual risks |
 | [`resume-forge.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/docs/resume-forge.md) | Case study for the desktop application the portfolio is built around |
-| [`content-notes.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/content-notes.md) | Public-safe source material, and every template field deliberately not published |
+| [`content-notes.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/content-notes.md) | Public-safe source material, every field deliberately withheld and why, and the conflict between my own two resumes |
+| [`decisions.md`](https://github.com/jeraddunne/resume-forge-portfolio/blob/master/docs/decisions.md) | Thirteen decisions with reasoning and who made each call |
 
 ---
 
