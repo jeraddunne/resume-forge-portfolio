@@ -74,3 +74,13 @@ textarea:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+ * Readability: the template's .timeline-text carries no bottom margin, because
+ * upstream never put two paragraphs in one timeline entry. Real role
+ * descriptions need several, and without this they render as one unbroken
+ * wall of text. Caught in screenshot review of the live site.
+ * ------------------------------------------------------------------------ */
+.timeline-text + .timeline-text {
+  margin-block-start: 10px;
+}
