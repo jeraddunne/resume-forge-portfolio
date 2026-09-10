@@ -1,0 +1,347 @@
+/**
+ * forge.css — styles for the bring-your-own-key panel.
+ *
+ * Kept in its own file rather than appended to style.css so the template's
+ * stylesheet stays reviewable as upstream code, and so this feature can be
+ * removed by deleting two files and one <article>.
+ *
+ * Uses the template's existing custom properties throughout; no new palette.
+ */
+
+.forge-intro {
+  margin-block-end: 30px;
+}
+
+.forge-intro p {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+}
+
+.forge-intro p + p {
+  margin-block-start: 12px;
+}
+
+.forge-panel {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  z-index: 1;
+}
+
+.forge-panel::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.forge-field {
+  margin-block-end: 18px;
+}
+
+.forge-field > label,
+.forge-legend {
+  display: block;
+  color: var(--white-2);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  margin-block-end: 8px;
+}
+
+.forge-hint {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  line-height: 1.5;
+  margin-block-start: 6px;
+}
+
+.forge-fieldset {
+  border: none;
+  margin-block-end: 18px;
+}
+
+.forge-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.forge-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 200px;
+  padding: 12px 14px;
+  background: var(--border-gradient-onyx);
+  border-radius: 10px;
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  cursor: pointer;
+  transition: var(--transition-1);
+}
+
+.forge-radio:hover {
+  color: var(--white-2);
+}
+
+.forge-radio:focus-within {
+  outline: 2px solid var(--orange-yellow-crayola);
+  outline-offset: 2px;
+}
+
+.forge-radio:has(input:checked) {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  font-weight: var(--fw-500);
+}
+
+.forge-radio input {
+  accent-color: var(--orange-yellow-crayola);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.forge-note {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  line-height: 1.6;
+  padding: 12px 14px;
+  border-left: 2px solid var(--orange-yellow-crayola);
+  background: hsla(45, 100%, 72%, 0.05);
+  border-radius: 0 8px 8px 0;
+  margin-block-end: 18px;
+}
+
+.forge-input,
+.forge-select,
+.forge-textarea {
+  display: block;
+  width: 100%;
+  background: var(--eerie-black-2);
+  color: var(--white-2);
+  font-family: inherit;
+  font-size: var(--fs-7);
+  padding: 12px 14px;
+  border: 1px solid var(--jet);
+  border-radius: 10px;
+  outline: none;
+  transition: var(--transition-1);
+}
+
+.forge-input:focus,
+.forge-select:focus,
+.forge-textarea:focus {
+  border-color: var(--orange-yellow-crayola);
+  outline: 2px solid hsla(45, 100%, 72%, 0.35);
+  outline-offset: 1px;
+}
+
+.forge-input::placeholder,
+.forge-textarea::placeholder {
+  color: hsla(0, 0%, 84%, 0.4);
+}
+
+.forge-textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.forge-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-block-start: 10px;
+}
+
+.forge-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--light-gray);
+  font-size: var(--fs-8);
+  cursor: pointer;
+}
+
+.forge-check input {
+  accent-color: var(--orange-yellow-crayola);
+  width: 15px;
+  height: 15px;
+}
+
+.forge-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition-1);
+  border: 1px solid var(--jet);
+  background: var(--border-gradient-onyx);
+  color: var(--white-2);
+}
+
+.forge-btn:hover:not(:disabled) {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+}
+
+.forge-btn:focus-visible {
+  outline: 2px solid var(--orange-yellow-crayola);
+  outline-offset: 2px;
+}
+
+.forge-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.forge-btn--primary {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  border-color: transparent;
+  font-weight: var(--fw-600);
+}
+
+.forge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block-start: 22px;
+}
+
+.forge-status {
+  margin-block-start: 18px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: var(--fs-8);
+  line-height: 1.6;
+  background: var(--eerie-black-2);
+  border-left: 3px solid var(--jet);
+  color: var(--light-gray);
+}
+
+.forge-status[data-tone="ok"] {
+  border-left-color: hsl(140, 55%, 50%);
+}
+
+.forge-status[data-tone="warn"] {
+  border-left-color: var(--orange-yellow-crayola);
+}
+
+.forge-status[data-tone="error"] {
+  border-left-color: var(--bittersweet-shimmer);
+  color: var(--white-2);
+}
+
+.forge-output {
+  margin-block-start: 16px;
+  padding: 16px;
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 10px;
+  color: var(--white-2);
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: var(--fs-8);
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.forge-usage {
+  margin-block-start: 10px;
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+}
+
+.forge-code {
+  display: block;
+  margin-block: 8px 0;
+  padding: 12px 14px;
+  background: var(--smoky-black);
+  border: 1px solid var(--jet);
+  border-radius: 8px;
+  color: var(--orange-yellow-crayola);
+  font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: var(--fs-8);
+  overflow-x: auto;
+}
+
+.forge-steps {
+  counter-reset: forge-step;
+  margin-block-end: 18px;
+}
+
+.forge-steps li {
+  position: relative;
+  padding-inline-start: 30px;
+  margin-block-end: 14px;
+  color: var(--light-gray);
+  font-size: var(--fs-8);
+  line-height: 1.6;
+}
+
+.forge-steps li::before {
+  counter-increment: forge-step;
+  content: counter(forge-step);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+  font-size: 11px;
+  font-weight: var(--fw-600);
+}
+
+.forge-privacy {
+  margin-block-start: 22px;
+  padding-block-start: 16px;
+  border-top: 1px solid var(--jet);
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  line-height: 1.6;
+}
+
+.forge-privacy strong {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+}
+
+/* The panel is content-first: on a narrow viewport everything is already a
+   single column, so only the action row needs to stop trying to sit inline. */
+@media (max-width: 450px) {
+  .forge-actions .forge-btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* Links inside hint text inherited the browser default blue, which is both
+   off-palette and low-contrast on the dark panel. Caught in screenshot QA. */
+.forge-hint a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.forge-hint a:hover {
+  color: var(--white-2);
+}

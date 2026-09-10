@@ -1,159 +1,159 @@
 'use strict';
 
+/**
+ * Portfolio shell behaviour.
+ *
+ * Adapted from the vCard Personal Portfolio template (MIT, codewithsadee).
+ * Changes from upstream are marked FIX / ADDED and are explained in
+ * docs/code-review.md.
+ */
+
+const $ = (selector, scope = document) => scope.querySelector(selector);
+const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
+const toggleActive = (elem) => elem.classList.toggle('active');
 
 
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+/* -------------------------------------------------------------------------
+ * Sidebar (mobile "Show Contacts" disclosure)
+ *
+ * FIX: upstream called addEventListener on the result of querySelector with no
+ * null check. Every block in this file is now guarded, because removing a
+ * section from index.html should degrade one feature rather than throw and
+ * kill every later listener on the page — including navigation.
+ * ADDED: aria-expanded is kept in sync so the control is meaningful to a
+ * screen reader, not just visually.
+ * ---------------------------------------------------------------------- */
+const sidebar = $('[data-sidebar]');
+const sidebarBtn = $('[data-sidebar-btn]');
 
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
+if (sidebar && sidebarBtn) {
+  sidebarBtn.addEventListener('click', () => {
+    const expanded = sidebar.classList.toggle('active');
+    sidebarBtn.setAttribute('aria-expanded', String(expanded));
   });
 }
 
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
 
-const filterFunc = function (selectedValue) {
+/* -------------------------------------------------------------------------
+ * Portfolio category filter
+ *
+ * Upstream's [data-selecct-value] typo is preserved deliberately: it is the
+ * contract between this file and index.html, and renaming it in one place
+ * only would silently break the select label. Noted in docs/code-review.md.
+ * ---------------------------------------------------------------------- */
+const select = $('[data-select]');
+const selectItems = $$('[data-select-item]');
+const selectValue = $('[data-selecct-value]');
+const filterBtns = $$('[data-filter-btn]');
+const filterItems = $$('[data-filter-item]');
 
-  for (let i = 0; i < filterItems.length; i++) {
+const filterFunc = (selectedValue) => {
+  filterItems.forEach((item) => {
+    const match = selectedValue === 'all' || selectedValue === item.dataset.category;
+    item.classList.toggle('active', match);
+  });
+};
 
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
-  }
-
+if (select) {
+  select.addEventListener('click', function () { toggleActive(this); });
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+selectItems.forEach((item) => {
+  item.addEventListener('click', function () {
+    const selectedValue = this.innerText.toLowerCase();
+    if (selectValue) selectValue.innerText = this.innerText;
+    if (select) toggleActive(select);
+    filterFunc(selectedValue);
+  });
+});
 
-for (let i = 0; i < filterBtn.length; i++) {
+let lastClickedBtn = filterBtns[0];
 
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', function () {
+    const selectedValue = this.innerText.toLowerCase();
+    if (selectValue) selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
+    if (lastClickedBtn) lastClickedBtn.classList.remove('active');
+    this.classList.add('active');
     lastClickedBtn = this;
+  });
+});
 
+
+/* -------------------------------------------------------------------------
+ * Page navigation
+ *
+ * FIX: upstream matched pages with `this.innerHTML.toLowerCase()` and then set
+ * the active nav link with `navigationLinks[i]` — where `i` was the *inner*
+ * (page) loop counter. That only worked while the nav list and the page list
+ * happened to be the same length and in the same order; adding a section
+ * silently highlighted the wrong tab. Pages are now addressed by an explicit
+ * data-nav-link value, and the active link is the one that was clicked.
+ *
+ * ADDED: aria-current="page" on the active control, and hash deep-linking so
+ * a section can be shared as a URL (e.g. /#forge) and survives a reload.
+ * ---------------------------------------------------------------------- */
+const navigationLinks = $$('[data-nav-link]');
+const pages = $$('[data-page]');
+
+const pageNames = pages.map((page) => page.dataset.page);
+
+const activatePage = (targetName, { updateHash = true, scroll = true } = {}) => {
+  if (!pageNames.includes(targetName)) return false;
+
+  pages.forEach((page) => {
+    page.classList.toggle('active', page.dataset.page === targetName);
   });
 
-}
-
-
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
+  navigationLinks.forEach((link) => {
+    const linkTarget = link.dataset.navLink || link.textContent.trim().toLowerCase();
+    const isActive = linkTarget === targetName;
+    link.classList.toggle('active', isActive);
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
     } else {
-      formBtn.setAttribute("disabled", "");
+      link.removeAttribute('aria-current');
     }
-
   });
-}
 
+  if (updateHash) {
+    // replaceState rather than assigning location.hash: assigning would make
+    // the browser jump to any element sharing that id and add a history entry
+    // for every tab click.
+    history.replaceState(null, '', `#${targetName}`);
+  }
+  if (scroll) window.scrollTo(0, 0);
 
+  return true;
+};
 
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+navigationLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    const target = link.dataset.navLink || link.textContent.trim().toLowerCase();
+    activatePage(target);
   });
-}
+});
+
+// In-page links such as <a href="#forge"> should switch tabs, not scroll.
+document.addEventListener('click', (event) => {
+  const anchor = event.target.closest('a[href^="#"]');
+  if (!anchor) return;
+
+  const target = anchor.getAttribute('href').slice(1);
+  if (pageNames.includes(target)) {
+    event.preventDefault();
+    activatePage(target);
+  }
+});
+
+// Restore the section named in the URL on first paint and on back/forward.
+const openFromHash = ({ scroll } = { scroll: false }) => {
+  const target = decodeURIComponent(window.location.hash.replace('#', '')).toLowerCase();
+  if (target) activatePage(target, { updateHash: false, scroll });
+};
+
+openFromHash();
+window.addEventListener('hashchange', () => openFromHash({ scroll: true }));

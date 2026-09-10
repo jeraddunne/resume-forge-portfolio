@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Monogram: J D">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(45, 100%, 72%)"/>
+      <stop offset="100%" stop-color="hsl(35, 100%, 60%)"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="36" fill="hsl(240, 2%, 13%)"/>
+  <rect x="1.5" y="1.5" width="157" height="157" rx="34.5" fill="none" stroke="url(#g)" stroke-opacity="0.45" stroke-width="3"/>
+  <text x="80" y="80" text-anchor="middle" dominant-baseline="central"
+        font-family="Poppins, Segoe UI, system-ui, sans-serif" font-size="62" font-weight="600"
+        fill="url(#g)" letter-spacing="2">JD</text>
+</svg>

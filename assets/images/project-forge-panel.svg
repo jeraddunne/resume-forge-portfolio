@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img">
+  <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="hsl(45,100%,72%)"/><stop offset="100%" stop-color="hsl(35,100%,60%)"/>
+  </linearGradient></defs>
+  <rect width="600" height="400" fill="hsl(240,2%,12%)"/>
+  <rect x="60" y="52" width="480" height="296" rx="12" fill="hsl(240,2%,17%)" stroke="hsl(0,0%,100%)" stroke-opacity=".08"/>
+  <text x="88" y="94" font-family="Poppins,Segoe UI,sans-serif" font-size="16" font-weight="600" fill="url(#b)">Provider</text>
+  <rect x="88" y="112" width="196" height="42" rx="8" fill="hsl(240,2%,13%)" stroke="url(#b)" stroke-opacity=".7"/>
+  <text x="108" y="139" font-family="Poppins,Segoe UI,sans-serif" font-size="13" fill="hsl(0,0%,100%)" fill-opacity=".8">Claude</text>
+  <path d="M258 128 l8 8 l8 -8" stroke="url(#b)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="304" y="112" width="196" height="42" rx="8" fill="hsl(240,2%,13%)" stroke="hsl(0,0%,100%)" stroke-opacity=".14"/>
+  <text x="324" y="139" font-family="Poppins,Segoe UI,sans-serif" font-size="13" fill="hsl(0,0%,100%)" fill-opacity=".45">Codex</text>
+  <text x="88" y="196" font-family="Poppins,Segoe UI,sans-serif" font-size="16" font-weight="600" fill="url(#b)">Your API key</text>
+  <rect x="88" y="214" width="412" height="42" rx="8" fill="hsl(240,2%,13%)" stroke="hsl(0,0%,100%)" stroke-opacity=".14"/>
+  <g fill="hsl(0,0%,100%)" fill-opacity=".5">
+    <circle cx="112" cy="235" r="4"/><circle cx="128" cy="235" r="4"/><circle cx="144" cy="235" r="4"/>
+    <circle cx="160" cy="235" r="4"/><circle cx="176" cy="235" r="4"/><circle cx="192" cy="235" r="4"/>
+    <circle cx="208" cy="235" r="4"/><circle cx="224" cy="235" r="4"/>
+  </g>
+  <rect x="88" y="286" width="150" height="44" rx="8" fill="url(#b)"/>
+  <text x="163" y="314" text-anchor="middle" font-family="Poppins,Segoe UI,sans-serif" font-size="14" font-weight="600" fill="hsl(240,2%,12%)">Rewrite bullet</text>
+  <text x="262" y="314" font-family="Poppins,Segoe UI,sans-serif" font-size="12" fill="hsl(0,0%,100%)" fill-opacity=".42">stays in your browser</text>
+</svg>

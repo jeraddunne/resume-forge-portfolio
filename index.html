@@ -5,17 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vCard - Personal Portfolio</title>
+  <title>Jerad Dunne &mdash; Software Engineer, AI-Assisted Tooling</title>
+  <meta name="description"
+    content="Portfolio of Jerad Dunne. Human-in-the-loop AI tooling, compliance rule engines, and a bring-your-own-key Claude panel that runs entirely in your browser.">
+  <meta name="author" content="Jerad Dunne">
 
   <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="icon" href="./assets/images/avatar-jd.svg" type="image/svg+xml">
 
   <!--
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/forge.css">
+  <link rel="stylesheet" href="./assets/css/a11y.css">
 
   <!--
     - google font link
@@ -26,6 +31,8 @@
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!--
     - #MAIN
@@ -42,24 +49,24 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/avatar-jd.svg" alt="" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Richard hanrick</h1>
+          <h1 class="name" title="Jerad Dunne">Jerad Dunne</h1>
 
-          <p class="title">Web developer</p>
+          <p class="title">Software Engineer &mdash; AI-Assisted Tooling</p>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
+        <button class="info_more-btn" data-sidebar-btn aria-expanded="false" aria-controls="sidebar-more">
           <span>Show Contacts</span>
 
-          <ion-icon name="chevron-down"></ion-icon>
+          <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
         </button>
 
       </div>
 
-      <div class="sidebar-info_more">
+      <div class="sidebar-info_more" id="sidebar-more">
 
         <div class="separator"></div>
 
@@ -68,13 +75,13 @@
           <li class="contact-item">
 
             <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
             </div>
 
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:richard@example.com" class="contact-link">richard@example.com</a>
+              <a href="mailto:jeradrush2112@gmail.com" class="contact-link">jeradrush2112@gmail.com</a>
             </div>
 
           </li>
@@ -82,13 +89,13 @@
           <li class="contact-item">
 
             <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Phone</p>
+              <p class="contact-title">GitHub</p>
 
-              <a href="tel:+12133522795" class="contact-link">+1 (213) 352-2795</a>
+              <a href="https://github.com/jeraddunne" class="contact-link" rel="noopener">github.com/jeraddunne</a>
             </div>
 
           </li>
@@ -96,27 +103,13 @@
           <li class="contact-item">
 
             <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-icon name="code-slash-outline" aria-hidden="true"></ion-icon>
             </div>
 
             <div class="contact-info">
-              <p class="contact-title">Birthday</p>
+              <p class="contact-title">Focus</p>
 
-              <time datetime="1982-06-23">June 23, 1982</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Sacramento, California, USA</address>
+              <p class="contact-link" style="text-transform: none;">Human-in-the-loop AI tooling</p>
             </div>
 
           </li>
@@ -128,20 +121,8 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
+            <a href="https://github.com/jeraddunne" class="social-link" rel="noopener" aria-label="GitHub profile">
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
             </a>
           </li>
 
@@ -159,34 +140,34 @@
       - #main-content
     -->
 
-    <div class="main-content">
+    <div class="main-content" id="main-content">
 
       <!--
         - #NAVBAR
       -->
 
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Section">
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link="about" aria-current="page">About</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link="resume">Resume</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
+            <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
+            <button class="navbar-link" data-nav-link="forge">Forge</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
+            <button class="navbar-link" data-nav-link="contact">Contact</button>
           </li>
 
         </ul>
@@ -209,17 +190,22 @@
 
         <section class="about-text">
           <p>
-            I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-            I enjoy
-            turning complex problems into simple, beautiful and intuitive designs.
+            I build tools that keep an engineer in the loop with a language model rather than handing the work over to
+            one. The pattern I keep returning to is the same: the model drafts, deterministic code audits the draft
+            against a written standard, and a human makes the call. The interesting engineering is in that second step
+            &mdash; the part that never calls a model at all.
           </p>
 
           <p>
-            My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-            Moreover, I
-            add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-            across your
-            message and identity in the most creative way. I created web design for many famous brand companies.
+            My current project is <strong>Resume Forge</strong>, a desktop application that produces OPM-compliant
+            federal resumes. Its most useful component is the compliance scanner, which never touches the API: it parses
+            the draft, measures it against the published hiring rules, and flags every violation instantly and for free.
+            The model writes; the rule engine keeps it honest.
+          </p>
+
+          <p>
+            This site is itself a working example. The panel under <strong>Forge</strong> runs on your own API key,
+            stores nothing on any server, and tells you exactly where your text goes before it goes there.
           </p>
         </section>
 
@@ -230,22 +216,22 @@
 
         <section class="service">
 
-          <h3 class="h3 service-title">What i'm doing</h3>
+          <h3 class="h3 service-title">What I do</h3>
 
           <ul class="service-list">
 
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
+                <img src="./assets/images/icon-app.svg" alt="" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
+                <h4 class="h4 service-item-title">AI-assisted document tooling</h4>
 
                 <p class="service-item-text">
-                  The most modern and high-quality design made at a professional level.
+                  Applications where a model drafts and deterministic code checks the result against a published
+                  standard before a person signs off on it.
                 </p>
               </div>
 
@@ -254,14 +240,15 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                <img src="./assets/images/icon-dev.svg" alt="" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
+                <h4 class="h4 service-item-title">Compliance and rule engines</h4>
 
                 <p class="service-item-text">
-                  High-quality development of sites at the professional level.
+                  Parsers and auditors that measure a document against a written rule set. No model call, so the check
+                  is instant, repeatable, and free to run on every keystroke.
                 </p>
               </div>
 
@@ -270,14 +257,15 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                <img src="./assets/images/icon-design.svg" alt="" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
+                <h4 class="h4 service-item-title">Secure API integration</h4>
 
                 <p class="service-item-text">
-                  Professional development of applications for iOS and Android.
+                  Bring-your-own-key integrations with real process isolation and OS-keychain storage, so a credential
+                  never sits somewhere it can leak from.
                 </p>
               </div>
 
@@ -286,216 +274,17 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                <img src="./assets/images/icon-photo.svg" alt="" width="40">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
+                <h4 class="h4 service-item-title">Accessible front-end work</h4>
 
                 <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
+                  Keyboard-navigable, screen-reader-friendly interfaces that stay usable on a narrow phone viewport.
                 </p>
               </div>
 
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials
-        -->
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        <!--
-          - clients
-        -->
-
-        <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
             </li>
 
           </ul>
@@ -522,51 +311,57 @@
 
           <div class="title-wrapper">
             <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+              <ion-icon name="hammer-outline" aria-hidden="true"></ion-icon>
             </div>
 
-            <h3 class="h3">Education</h3>
+            <h3 class="h3">Engineering practice</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">University school of the arts</h4>
+              <h4 class="h4 timeline-item-title">Resume Forge &mdash; desktop application</h4>
 
-              <span>2007 — 2008</span>
+              <span>2026</span>
 
               <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
+                Designed and built an Electron and React application that produces OPM-compliant two-page federal
+                resumes and ATS-friendly private-sector resumes. Architected it in three layers with a hard security
+                seam: a renderer with no filesystem, network, or secret access; a privileged main process that owns the
+                OS keychain and every outbound call; and a pure-logic core with no Electron dependency, so the rule
+                engine can be unit-tested and reused outside the app.
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">New york academy of art</h4>
+              <h4 class="h4 timeline-item-title">Deterministic compliance scanner</h4>
 
-              <span>2006 — 2007</span>
+              <span>2026</span>
 
               <p class="timeline-text">
-                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
-                omnis..
+                Wrote the component the project is built around: an auditor that never calls a model. It parses the
+                draft resume and checks the two-page budget, the required per-position OPM fields, the header
+                requirements, and orphan bullets against the parsed job announcement. Because it is deterministic it
+                runs on every keystroke at zero cost &mdash; the model drafts, this decides whether the draft is
+                acceptable.
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
+              <h4 class="h4 timeline-item-title">This portfolio &mdash; AI-assisted build</h4>
 
-              <span>2002 — 2004</span>
+              <span>2026</span>
 
               <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores
-                eos.
+                Took an MIT-licensed template to a published site through a controlled AI-assisted workflow: written
+                acceptance criteria first, a tracked issue, a feature branch, a reviewed plan, incremental commits, a
+                human review of every generated change, and a documented test pass. The full prompt-and-response record
+                is published in the repository.
               </p>
 
             </li>
@@ -574,57 +369,30 @@
           </ol>
 
         </section>
+
 
         <section class="timeline">
 
           <div class="title-wrapper">
             <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
+              <ion-icon name="book-outline" aria-hidden="true"></ion-icon>
             </div>
 
-            <h3 class="h3">Experience</h3>
+            <h3 class="h3">Coursework</h3>
           </div>
 
           <ol class="timeline-list">
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Creative director</h4>
+              <h4 class="h4 timeline-item-title">SWE 380 / CSC 580 &mdash; Software Engineering</h4>
 
-              <span>2015 — Present</span>
-
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Art director</h4>
-
-              <span>2013 — 2015</span>
+              <span>2026</span>
 
               <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Web designer</h4>
-
-              <span>2010 — 2013</span>
-
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
+                Assignment 1: GitHub and AI Engineering Practice. Directing, inspecting, testing, and taking
+                responsibility for AI-assisted software work &mdash; not demonstrating that a model can produce a
+                website.
               </p>
 
             </li>
@@ -633,65 +401,93 @@
 
         </section>
 
+
         <section class="skill">
 
-          <h3 class="h3 skills-title">My skills</h3>
+          <h3 class="h3 skills-title">Tools I work in</h3>
 
           <ul class="skills-list content-card">
 
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="80">80%</data>
+                <h5 class="h5">Languages and runtime</h5>
               </div>
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
+              <p class="timeline-text">
+                JavaScript (ES modules), Node.js, HTML, CSS
+              </p>
 
             </li>
 
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
+                <h5 class="h5">Application frameworks</h5>
               </div>
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
+              <p class="timeline-text">
+                React, Electron, Vite
+              </p>
 
             </li>
 
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
+                <h5 class="h5">Model integration</h5>
               </div>
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
+              <p class="timeline-text">
+                Anthropic Messages API, OpenAI-compatible Chat Completions, prompt design, structured JSON output
+                handling, token and cost modelling
+              </p>
 
             </li>
 
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
+                <h5 class="h5">Document processing</h5>
               </div>
 
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
+              <p class="timeline-text">
+                PDF and DOCX ingest, DOCX generation, markdown parsing and page-budget estimation
+              </p>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Credential handling</h5>
               </div>
+
+              <p class="timeline-text">
+                OS keychain storage, process isolation, context isolation, bring-your-own-key architectures, secret
+                scanning in version control
+              </p>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Workflow</h5>
+              </div>
+
+              <p class="timeline-text">
+                Git, GitHub issues and pull requests, feature branches, code review, GitHub Pages
+              </p>
 
             </li>
 
           </ul>
+
+          <p class="timeline-text" style="margin-block-start: 20px; font-size: var(--fs-7);">
+            Listed without proficiency percentages on purpose. A number like &ldquo;JavaScript 85%&rdquo; is not
+            measured against anything, so it is not a claim I can support.
+          </p>
 
         </section>
 
@@ -720,27 +516,23 @@
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>Web design</button>
+              <button data-filter-btn>AI tooling</button>
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
+              <button data-filter-btn>Web</button>
             </li>
 
           </ul>
 
           <div class="filter-select-box">
 
-            <button class="filter-select" data-select>
+            <button class="filter-select" data-select aria-label="Filter projects by category">
 
               <div class="select-value" data-selecct-value>Select category</div>
 
               <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
+                <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
               </div>
 
             </button>
@@ -752,15 +544,11 @@
               </li>
 
               <li class="select-item">
-                <button data-select-item>Web design</button>
+                <button data-select-item>AI tooling</button>
               </li>
 
               <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
+                <button data-select-item>Web</button>
               </li>
 
             </ul>
@@ -769,164 +557,59 @@
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="ai tooling">
+              <a href="https://github.com/jeraddunne/resume-forge-portfolio/blob/master/docs/resume-forge.md" rel="noopener">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
+                    <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                  <img src="./assets/images/project-resume-forge.svg"
+                    alt="Resume Forge: a resume draft beside a compliance checklist" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Finance</h3>
+                <h3 class="project-title">Resume Forge</h3>
 
-                <p class="project-category">Web development</p>
+                <p class="project-category">AI tooling &mdash; case study</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="ai tooling">
+              <a href="#forge">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
+                    <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                  <img src="./assets/images/project-forge-panel.svg"
+                    alt="Bring-your-own-key panel showing a provider selector and a key field" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Orizon</h3>
+                <h3 class="project-title">Forge Panel</h3>
 
-                <p class="project-category">Web development</p>
+                <p class="project-category">AI tooling &mdash; try it on this site</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="web">
+              <a href="https://github.com/jeraddunne/resume-forge-portfolio/blob/master/ai-log.md" rel="noopener">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
+                    <ion-icon name="eye-outline" aria-hidden="true"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                  <img src="./assets/images/project-ai-log.svg"
+                    alt="A prompt-and-response log with accepted and rejected entries marked" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Fundo</h3>
+                <h3 class="project-title">AI Engineering Log</h3>
 
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
+                <p class="project-category">Web &mdash; how this site was built</p>
 
               </a>
             </li>
@@ -936,201 +619,139 @@
         </section>
 
       </article>
+
+
+
+
+
 
 
 
 
 
       <!--
-        - #BLOG
+        - #FORGE
       -->
 
-      <article class="blog" data-page="blog">
+      <article class="forge" data-page="forge">
 
         <header>
-          <h2 class="h2 article-title">Blog</h2>
+          <h2 class="h2 article-title">Forge</h2>
         </header>
 
-        <section class="blog-posts">
+        <section class="forge-intro">
+          <p>
+            A working slice of <strong>Resume Forge</strong>, running in your browser on your own API key. Paste one
+            resume bullet and get three rewrites, plus an explicit list of the evidence the bullet is missing. It will
+            not invent a metric for you &mdash; that rule outranks every style rule in the prompt.
+          </p>
+          <p>
+            There is no backend here. This site cannot see your key or your text, because there is no server of mine
+            for either to travel through.
+          </p>
+        </section>
 
-          <ul class="blog-posts-list">
+        <section class="forge-panel" id="forge-panel">
 
-            <li class="blog-post-item">
-              <a href="#">
+          <form id="forge-form" novalidate>
 
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
+            <fieldset class="forge-fieldset">
+              <legend class="forge-legend">1. Choose a provider</legend>
+              <div class="forge-choices" id="forge-provider-choices"></div>
+            </fieldset>
 
-                <div class="blog-content">
+            <p class="forge-note" id="forge-provider-note"></p>
 
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+            <!-- Direct-transport controls: shown for providers the browser can call. -->
+            <div id="forge-direct-block">
 
-                    <span class="dot"></span>
+              <div class="forge-field">
+                <label for="forge-model">2. Model</label>
+                <select class="forge-select" id="forge-model"></select>
+              </div>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
+              <div class="forge-field">
+                <label for="forge-key">3. Your API key</label>
+                <input class="forge-input" type="password" id="forge-key" autocomplete="off" spellcheck="false"
+                  autocapitalize="off" autocorrect="off" name="forge-key-field">
+                <div class="forge-inline">
+                  <label class="forge-check" for="forge-remember">
+                    <input type="checkbox" id="forge-remember">
+                    <span>Keep it for this tab only</span>
+                  </label>
+                  <button type="button" class="forge-btn" id="forge-forget">Forget key</button>
                 </div>
+                <p class="forge-hint" id="forge-key-status"></p>
+                <p class="forge-hint"><a id="forge-key-link" href="#" rel="noopener"></a></p>
+              </div>
 
-              </a>
-            </li>
+            </div>
 
-            <li class="blog-post-item">
-              <a href="#">
+            <!-- Handoff-transport controls: shown for providers no browser can call. -->
+            <div id="forge-handoff-block" hidden>
 
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
+              <ol class="forge-steps">
+                <li>Build the prompt below, then press <strong>Copy prompt</strong>.</li>
+                <li>
+                  In a terminal, pipe it to your local Codex CLI &mdash; already configured with your U-M Toolkit key:
+                  <code class="forge-code" id="forge-cli-command"></code>
+                </li>
+                <li>Paste what it prints into the box below and press <strong>Show result</strong>.</li>
+              </ol>
 
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
+              <div class="forge-field">
+                <label for="forge-paste">CLI output</label>
+                <textarea class="forge-textarea" id="forge-paste"
+                  placeholder="Paste what codex printed here"></textarea>
+                <div class="forge-inline">
+                  <button type="button" class="forge-btn" id="forge-render">Show result</button>
                 </div>
+              </div>
 
-              </a>
-            </li>
+            </div>
 
-            <li class="blog-post-item">
-              <a href="#">
+            <div class="forge-field">
+              <label for="forge-mode">Resume standard</label>
+              <select class="forge-select" id="forge-mode">
+                <option value="private">Private sector &mdash; ATS</option>
+                <option value="federal">Federal &mdash; OPM two-page</option>
+              </select>
+            </div>
 
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
+            <div class="forge-field">
+              <label for="forge-role">Target role <span class="forge-hint" style="display:inline;">(optional)</span></label>
+              <input class="forge-input" type="text" id="forge-role"
+                placeholder="e.g. Software Engineer, Data Analyst">
+            </div>
 
-                <div class="blog-content">
+            <div class="forge-field">
+              <label for="forge-bullet">Resume bullet to rewrite</label>
+              <textarea class="forge-textarea" id="forge-bullet"
+                placeholder="Responsible for managing the team inbox and helping with reports."></textarea>
+              <p class="forge-hint">
+                Use a real bullet from your own resume. Nothing you type is stored or transmitted anywhere except to
+                the provider you picked, when you press the button.
+              </p>
+            </div>
 
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+            <div class="forge-actions">
+              <button type="button" class="forge-btn forge-btn--primary" id="forge-run">Rewrite bullet</button>
+              <button type="button" class="forge-btn forge-btn--primary" id="forge-copy" hidden>Copy prompt</button>
+            </div>
 
-                    <span class="dot"></span>
+          </form>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
+          <p class="forge-status" id="forge-status" role="status" aria-live="polite" hidden></p>
 
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
+          <pre class="forge-output" id="forge-output" tabindex="0" hidden></pre>
 
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
+          <p class="forge-usage" id="forge-usage" hidden></p>
 
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
+          <p class="forge-privacy"><strong>Where your data goes:</strong> <span id="forge-privacy"></span></p>
 
         </section>
 
       </article>
-
-
-
 
 
       <!--
@@ -1143,34 +764,46 @@
           <h2 class="h2 article-title">Contact</h2>
         </header>
 
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
         <section class="contact-form">
 
-          <h3 class="h3 form-title">Contact Form</h3>
+          <h3 class="h3 form-title">Get in touch</h3>
 
-          <form action="#" class="form" data-form>
+          <p class="timeline-text" style="margin-block-end: 20px;">
+            Email is the reliable way to reach me. This site has no backend, so there is no contact form here that
+            quietly fails to send &mdash; the link below opens your own mail client.
+          </p>
 
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+          <ul class="contacts-list">
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
+            <li class="contact-item">
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+              <div class="icon-box">
+                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+              </div>
 
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
 
-          </form>
+                <a href="mailto:jeradrush2112@gmail.com" class="contact-link">jeradrush2112@gmail.com</a>
+              </div>
+
+            </li>
+
+            <li class="contact-item">
+
+              <div class="icon-box">
+                <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">GitHub</p>
+
+                <a href="https://github.com/jeraddunne" class="contact-link" rel="noopener">github.com/jeraddunne</a>
+              </div>
+
+            </li>
+
+          </ul>
 
         </section>
 
@@ -1189,6 +822,11 @@
     - custom js link
   -->
   <script src="./assets/js/script.js"></script>
+
+  <!--
+    - forge panel (ES module; loads deferred by default)
+  -->
+  <script type="module" src="./assets/js/forge/forge.js"></script>
 
   <!--
     - ionicon link
